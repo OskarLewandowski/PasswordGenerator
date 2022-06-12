@@ -31,5 +31,28 @@ namespace PasswordGenerator.Password
             "[", "]", "{", "}", "|", "^", "&", ">", "<", "/", "\\", "\"", "'", ".",
             ",", ":", ";", "="
         };
+
+        public void Display(List<string> list)
+        {
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+
+            foreach (var element in list)
+            {
+                Console.Write($"{element} ");
+            }
+            Console.WriteLine("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        }
+
+        public void DisplayVerbose(List<string> list)
+        {
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                Console.WriteLine($"ID:[ {i} ] Value:[ {list[i]} ]");
+            }
+
+            Console.WriteLine("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        }
     }
 }
