@@ -1,7 +1,7 @@
 ﻿using PasswordGenerator.Extensions;
 using PasswordGenerator.Password;
 
-PasswordComponent passwordComponents = new PasswordComponent(12, 6, 3, 1, 0);
+PasswordComponent passwordComponents = new PasswordComponent(16, 4, 4, 4, 4);
 passwordComponents.Display();
 var validatePasswordResult = passwordComponents.ValidatePasswordComponent();
 
@@ -18,12 +18,12 @@ myCharactersList.Shuffle(3);
 Console.WriteLine("\nPassword requirements");
 password.AddPasswordRequirements(passwordComponents);
 
-Console.WriteLine("Generate password");
-var myGeneratedPassword = password.GeneratePassword(myCharactersList);
-Console.WriteLine($"myGeneratedPassword: {myGeneratedPassword}");
-Console.WriteLine("\nCheckPassword");
-var result = password.CheckPassword(myGeneratedPassword);
-Console.WriteLine($"PasswordCheck: {result}");
+//Console.WriteLine("Generate password");
+//var myGeneratedPassword = password.GeneratePassword(myCharactersList);
+//Console.WriteLine($"myGeneratedPassword: {myGeneratedPassword}");
+//Console.WriteLine("\nCheckPassword");
+//var result = password.CheckPassword(myGeneratedPassword);
+//Console.WriteLine($"PasswordCheck: {result}");
 
 var pass1 = password.GetPassword(myCharactersList);
 Console.WriteLine("My password:");

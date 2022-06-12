@@ -139,12 +139,12 @@ namespace PasswordGenerator.Password
                 charactersInTotal++;
             }
 
-            Console.WriteLine("Password specific:");
-            Console.WriteLine("Digits: " + digits);
-            Console.WriteLine("LargeLetter: " + upperCase);
-            Console.WriteLine("SmallLetter: " + lowerCase);
-            Console.WriteLine("SpecialCharacter: " + specialCase);
-            Console.WriteLine("CharactersInTotal: " + charactersInTotal);
+            //Console.WriteLine("Password specific:");
+            //Console.WriteLine("Digits: " + digits);
+            //Console.WriteLine("LargeLetter: " + upperCase);
+            //Console.WriteLine("SmallLetter: " + lowerCase);
+            //Console.WriteLine("SpecialCharacter: " + specialCase);
+            //Console.WriteLine("CharactersInTotal: " + charactersInTotal);
 
             foreach (var requirement in requirements)
             {
@@ -190,7 +190,7 @@ namespace PasswordGenerator.Password
                 }
             }
 
-            Console.WriteLine("Your password is: good");
+            //Console.WriteLine("Your password is: good");
             return true;
         }
 
@@ -209,7 +209,6 @@ namespace PasswordGenerator.Password
                 {
                     generatedPassword = GeneratePassword(characterList);
                     resultCheckPassword = CheckPassword(generatedPassword);
-                    Console.WriteLine(99);
                 }
 
                 return generatedPassword;
