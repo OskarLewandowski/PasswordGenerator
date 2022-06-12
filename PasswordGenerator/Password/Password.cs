@@ -9,6 +9,7 @@ namespace PasswordGenerator.Password
     public class Password
     {
         private PasswordAvailableCharacters charactersList = new PasswordAvailableCharacters();
+        private Dictionary<string, int> passwordRequirements = new Dictionary<string, int>();
 
         public List<string> PrepareListOfCharacters(PasswordComponent passwordComponent)
         {
@@ -64,6 +65,26 @@ namespace PasswordGenerator.Password
             }
 
             return availableCharacters;
+        }
+
+        public Dictionary<string, int> AddPasswordRequirements(PasswordComponent passwordComponent)
+        {
+            Type objType = passwordComponent.GetType();
+            var properties = objType.GetProperties();
+
+            foreach (var property in properties)
+            {
+                var propName = property.Name;
+                var propValue = property.GetValue(passwordComponent);
+                Console.WriteLine($"{propName} - {propValue}");
+
+                if (propValue != null && (int)propValue != 0)
+                {
+                    passwordRequirements.Add(propName, (int)propValue);
+                }
+            }
+
+            return passwordRequirements;
         }
     }
 }

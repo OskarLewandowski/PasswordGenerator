@@ -15,4 +15,8 @@ var myCharactersList = password.PrepareListOfCharacters(passwordComponents);
 
 myCharactersList.Shuffle(3);
 
+Console.WriteLine("\nPassword requirements");
+password.AddPasswordRequirements(passwordComponents);
+
+
 Console.ReadLine();
