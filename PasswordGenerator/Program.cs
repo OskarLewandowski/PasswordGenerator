@@ -13,6 +13,6 @@ Console.WriteLine();
 Password password = new Password();
 var myCharactersList = password.PrepareListOfCharacters(passwordComponents);
 
-myCharactersList.Shuffle();
+myCharactersList.Shuffle(3);
 
 Console.ReadLine();
