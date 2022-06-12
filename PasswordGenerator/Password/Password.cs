@@ -107,5 +107,91 @@ namespace PasswordGenerator.Password
 
             return password.ToString();
         }
+
+        public bool CheckPassword(string password)
+        {
+            var requirements = passwordRequirements;
+
+            int charactersInTotal = 0;
+            int digits = 0;
+            int upperCase = 0;
+            int lowerCase = 0;
+            int specialCase = 0;
+
+            foreach (var sign in password)
+            {
+                if (char.IsDigit(sign))
+                {
+                    digits++;
+                }
+                else if (char.IsUpper(sign))
+                {
+                    upperCase++;
+                }
+                else if (char.IsLower(sign))
+                {
+                    lowerCase++;
+                }
+                else if (charactersList.specialCharactersList.Contains(sign.ToString()))
+                {
+                    specialCase++;
+                }
+                charactersInTotal++;
+            }
+
+            Console.WriteLine("Password specific:");
+            Console.WriteLine("Digits: " + digits);
+            Console.WriteLine("LargeLetter: " + upperCase);
+            Console.WriteLine("SmallLetter: " + lowerCase);
+            Console.WriteLine("SpecialCharacter: " + specialCase);
+            Console.WriteLine("CharactersInTotal: " + charactersInTotal);
+
+            foreach (var requirement in requirements)
+            {
+                var key = requirement.Key;
+                var value = requirement.Value;
+
+                if (key == "HowManyCharactersInTotal")
+                {
+                    var passwordLenght = password.Length;
+
+                    if (!(passwordLenght == value))
+                    {
+                        return false;
+                    }
+                }
+                else if (key == "HowManyDigits")
+                {
+                    if (!(digits >= value))
+                    {
+                        return false;
+                    }
+                }
+                else if (key == "HowManyLargeLetter")
+                {
+                    if (!(upperCase >= value))
+                    {
+                        return false;
+                    }
+                }
+                else if (key == "HowManySmallLetter")
+                {
+                    if (!(lowerCase >= value))
+                    {
+                        return false;
+                    }
+                }
+                else if (key == "HowManySpecialCharacter")
+                {
+                    if (!(specialCase >= value))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            Console.WriteLine("Your password is: good");
+            return true;
+        }
     }
 }
