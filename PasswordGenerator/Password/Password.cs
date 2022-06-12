@@ -86,5 +86,26 @@ namespace PasswordGenerator.Password
 
             return passwordRequirements;
         }
+
+        public string GeneratePassword(List<string> characterList)
+        {
+            var result = passwordRequirements.TryGetValue("HowManyCharactersInTotal", out int lenght);
+
+            if (result == false)
+            {
+                return "Something went wrong";
+            }
+
+            string password = "";
+            Random random = new Random();
+
+            while (password.Length != lenght)
+            {
+                int index = random.Next(characterList.Count);
+                password += characterList[index];
+            }
+
+            return password.ToString();
+        }
     }
 }
