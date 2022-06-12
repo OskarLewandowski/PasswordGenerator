@@ -8,4 +8,6 @@ Console.WriteLine(
     $"SmallLetter: {passwordComponents.HowManySmallLetter}\n" +
     $"SpecialCharacter: {passwordComponents.HowManySpecialCharacter}\n");
 
+PasswordAvailableCharacters availableCharacters = new PasswordAvailableCharacters();
+
 Console.ReadLine();
