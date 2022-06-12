@@ -1,4 +1,5 @@
-﻿using PasswordGenerator.Password;
+﻿using PasswordGenerator.Extensions;
+using PasswordGenerator.Password;
 
 PasswordComponent passwordComponents = new PasswordComponent(8, 1, 0, 1, 1);
 passwordComponents.Display();
@@ -11,5 +12,7 @@ Console.WriteLine();
 
 Password password = new Password();
 var myCharactersList = password.PrepareListOfCharacters(passwordComponents);
+
+myCharactersList.Shuffle();
 
 Console.ReadLine();
