@@ -42,5 +42,14 @@ namespace PasswordGenerator.Password
             Console.WriteLine("Validation failed");
             return false;
         }
+
+        public void Display()
+        {
+            Console.WriteLine($"HowManyCharactersInTotal: {HowManyCharactersInTotal}\n" +
+                $"HowManyDigits: {HowManyDigits}\n" +
+                $"HowManyLargeLetter: {HowManyLargeLetter}\n" +
+                $"HowManySmallLetter: {HowManySmallLetter}\n" +
+                $"HowManySpecialCharacter: {HowManySpecialCharacter}\n");
+        }
     }
 }
