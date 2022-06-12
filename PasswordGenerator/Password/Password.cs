@@ -193,5 +193,27 @@ namespace PasswordGenerator.Password
             Console.WriteLine("Your password is: good");
             return true;
         }
+
+        public string GetPassword(List<string> characterList)
+        {
+            var generatedPassword = GeneratePassword(characterList);
+            var resultCheckPassword = CheckPassword(generatedPassword);
+
+            if (resultCheckPassword == true)
+            {
+                return generatedPassword;
+            }
+            else
+            {
+                while (resultCheckPassword == false)
+                {
+                    generatedPassword = GeneratePassword(characterList);
+                    resultCheckPassword = CheckPassword(generatedPassword);
+                    Console.WriteLine(99);
+                }
+
+                return generatedPassword;
+            }
+        }
     }
 }
