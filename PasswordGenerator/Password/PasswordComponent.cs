@@ -23,5 +23,24 @@ namespace PasswordGenerator.Password
             HowManySmallLetter = howManySmallLetter;
             HowManySpecialCharacter = howManySpecialCharacter;
         }
+
+        public bool ValidatePasswordComponent()
+        {
+            var totalCharacters = HowManyCharactersInTotal;
+
+            var sumOfCharacters = HowManyDigits
+                + HowManyLargeLetter
+                + HowManySmallLetter
+                + HowManySpecialCharacter;
+
+            if (totalCharacters >= sumOfCharacters)
+            {
+                Console.WriteLine("Validation successful");
+                return true;
+            }
+
+            Console.WriteLine("Validation failed");
+            return false;
+        }
     }
 }
