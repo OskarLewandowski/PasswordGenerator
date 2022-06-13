@@ -2,6 +2,7 @@
 using PasswordGenerator.Extensions;
 using PasswordGenerator.Password;
 
+PasswordComponent passwordDefaultComponent = new PasswordComponent(12, 2, 2, 2, 2);
 string userInput = "";
 Terminal.Display();
 
@@ -15,19 +16,26 @@ while (true)
         switch (choice)
         {
             case 1:
-                Terminal.WriteLineColor("Generate password with default options", ColorName.Blue);
+                Password password = new Password();
+                var myCharactersList = password.PrepareListOfCharacters(passwordDefaultComponent);
+                myCharactersList.Shuffle(3);
+                password.AddPasswordRequirements(passwordDefaultComponent);
+                Terminal.WriteLineColor(password.GetPassword(myCharactersList), ColorName.Green);
                 break;
             case 2:
-                Terminal.WriteLineColor("Generate password with extended options", ColorName.Blue);
+                passwordDefaultComponent.Display();
                 break;
             case 3:
-                Terminal.WriteLineColor("Edit list - not applied", ColorName.Blue);
+                Terminal.WriteLineColor("Generate password with extended options", ColorName.Blue);
                 break;
             case 4:
+                Terminal.WriteLineColor("Edit list - not applied", ColorName.Blue);
+                break;
+            case 5:
                 Console.Clear();
                 Terminal.Display();
                 break;
-            case 5:
+            case 6:
                 Environment.Exit(0);
                 break;
             default:
