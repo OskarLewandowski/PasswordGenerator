@@ -45,11 +45,11 @@ namespace PasswordGenerator.Password
 
         public void Display()
         {
-            Console.WriteLine($"HowManyCharactersInTotal: {HowManyCharactersInTotal}\n" +
-                $"HowManyDigits: {HowManyDigits}\n" +
-                $"HowManyLargeLetter: {HowManyLargeLetter}\n" +
-                $"HowManySmallLetter: {HowManySmallLetter}\n" +
-                $"HowManySpecialCharacter: {HowManySpecialCharacter}\n");
+            Console.WriteLine($"Characters in total: {HowManyCharactersInTotal}\n" +
+                $"Minimum digits: {HowManyDigits}\n" +
+                $"Minimum large letter: {HowManyLargeLetter}\n" +
+                $"Minimum small letter: {HowManySmallLetter}\n" +
+                $"Minimum special characters: {HowManySpecialCharacter}\n");
         }
     }
 }
