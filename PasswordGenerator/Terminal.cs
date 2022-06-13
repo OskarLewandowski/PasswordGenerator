@@ -13,9 +13,8 @@ namespace PasswordGenerator
             Terminal.WriteLineColor("[ 1 ] Generate password with default options", ColorName.Blue);
             Terminal.WriteLineColor("[ 2 ] Display password details - default option", ColorName.Blue);
             Terminal.WriteLineColor("[ 3 ] Generate password with extended options", ColorName.Blue);
-            Terminal.WriteLineColor("[ 4 ] Edit list - not applied", ColorName.Blue);
-            Terminal.WriteLineColor("[ 5 ] Clear", ColorName.Blue);
-            Terminal.WriteLineColor("[ 6 ] Exit", ColorName.Blue);
+            Terminal.WriteLineColor("[ 4 ] Clear", ColorName.Blue);
+            Terminal.WriteLineColor("[ 5 ] Exit", ColorName.Blue);
         }
 
         public static void WriteLineColor(string message, ColorName colorName)
