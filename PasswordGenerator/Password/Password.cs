@@ -24,28 +24,28 @@ namespace PasswordGenerator.Password
             {
                 availableCharacters.AddRange(charactersList.digitsList);
                 IsAddedHowManyDigits = true;
-                Console.WriteLine("Digits included");
+                //Console.WriteLine("Digits included");
             }
 
             if (passwordComponent.HowManyLargeLetter != 0)
             {
                 availableCharacters.AddRange(charactersList.largeLetterList);
                 IsAddedHowManyLargeLetter = true;
-                Console.WriteLine("Large letter included");
+                //Console.WriteLine("Large letter included");
             }
 
             if (passwordComponent.HowManySmallLetter != 0)
             {
                 availableCharacters.AddRange(charactersList.smallLetterList);
                 IsAddedHowManySmallLetter = true;
-                Console.WriteLine("Small letter included");
+                //Console.WriteLine("Small letter included");
             }
 
             if (passwordComponent.HowManySpecialCharacter != 0)
             {
                 availableCharacters.AddRange(charactersList.specialCharactersList);
                 IsAddedHowManySpecialCharacter = true;
-                Console.WriteLine("Special characters included");
+                //Console.WriteLine("Special characters included");
             }
 
             if (IsAddedHowManyDigits == false &&
@@ -53,7 +53,7 @@ namespace PasswordGenerator.Password
                 IsAddedHowManySmallLetter == false &&
                 IsAddedHowManySpecialCharacter == false)
             {
-                Console.WriteLine("Generate default list");
+                //Console.WriteLine("Generate default list");
                 List<string> defeultList = new List<string>();
 
                 defeultList.AddRange(charactersList.digitsList);
@@ -76,7 +76,7 @@ namespace PasswordGenerator.Password
             {
                 var propName = property.Name;
                 var propValue = property.GetValue(passwordComponent);
-                Console.WriteLine($"{propName} - {propValue}");
+                //Console.WriteLine($"{propName} - {propValue}");
 
                 if (propValue != null && (int)propValue != 0)
                 {

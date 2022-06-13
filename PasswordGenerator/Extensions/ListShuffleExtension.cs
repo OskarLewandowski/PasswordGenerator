@@ -12,7 +12,7 @@ namespace PasswordGenerator.Extensions
 
         public static void Shuffle<T>(this IList<T> list, int howMuch = 1)
         {
-            int result = 0;
+            //int result = 0;
 
             if (howMuch <= 0)
             {
@@ -30,10 +30,10 @@ namespace PasswordGenerator.Extensions
                     list[k] = list[n];
                     list[n] = value;
                 }
-                result++;
+                //result++;
             }
 
-            Console.WriteLine($"Shuffle counter: {result}");
+            //Console.WriteLine($"Shuffle counter: {result}");
         }
     }
 }

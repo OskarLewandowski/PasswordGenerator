@@ -20,7 +20,9 @@ while (true)
                 var myCharactersList = password.PrepareListOfCharacters(passwordDefaultComponent);
                 myCharactersList.Shuffle(3);
                 password.AddPasswordRequirements(passwordDefaultComponent);
+                Terminal.WriteLineColor("-\t-\t-\t-\t-\t-\t-\t", ColorName.DarkMagenta);
                 Terminal.WriteLineColor(password.GetPassword(myCharactersList), ColorName.Green);
+                Terminal.WriteLineColor("-\t-\t-\t-\t-\t-\t-\t", ColorName.DarkMagenta);
                 break;
             case 2:
                 passwordDefaultComponent.Display();
