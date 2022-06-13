@@ -116,6 +116,14 @@ static int MakeExtendedPassword(PasswordComponent model)
         Terminal.WriteLineColor("Bad value", ColorName.DarkRed);
     }
 
+    var validatePasswordResult = model.ValidatePasswordComponent();
+
+    if (validatePasswordResult == false)
+    {
+        Terminal.WriteLineColor("Bad password length", ColorName.DarkRed);
+        return -1;
+    }
+
     Terminal.WriteLineColor("How many minimum special characters:", ColorName.Gray);
     input = Console.ReadLine();
     if (int.TryParse(input, out int specialCharacters))
