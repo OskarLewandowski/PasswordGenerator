@@ -1,31 +1,57 @@
-﻿using PasswordGenerator.Extensions;
+﻿using PasswordGenerator;
+using PasswordGenerator.Extensions;
 using PasswordGenerator.Password;
 
-PasswordComponent passwordComponents = new PasswordComponent(16, 4, 4, 4, 4);
-passwordComponents.Display();
-var validatePasswordResult = passwordComponents.ValidatePasswordComponent();
+string userInput = "";
+Terminal.Display();
 
-PasswordAvailableCharacters availableCharacters = new PasswordAvailableCharacters();
-Console.WriteLine();
-//availableCharacters.Display(availableCharacters.smallLetterList);
-//availableCharacters.DisplayVerbose(availableCharacters.smallLetterList);
+while (true)
+{
+    Terminal.WriteLineColor("Type 1 - 5 to choose what you want to do:", ColorName.Yellow);
+    userInput = Console.ReadLine().ToLower();
 
-Password password = new Password();
-var myCharactersList = password.PrepareListOfCharacters(passwordComponents);
-
-myCharactersList.Shuffle(3);
-
-Console.WriteLine("\nPassword requirements");
-password.AddPasswordRequirements(passwordComponents);
-
-//Console.WriteLine("Generate password");
-//var myGeneratedPassword = password.GeneratePassword(myCharactersList);
-//Console.WriteLine($"myGeneratedPassword: {myGeneratedPassword}");
-//Console.WriteLine("\nCheckPassword");
-//var result = password.CheckPassword(myGeneratedPassword);
-//Console.WriteLine($"PasswordCheck: {result}");
-
-var pass1 = password.GetPassword(myCharactersList);
-Console.WriteLine("My password:");
-Console.WriteLine(pass1);
-Console.ReadLine();
+    if (int.TryParse(userInput, out int choice))
+    {
+        switch (choice)
+        {
+            case 1:
+                Terminal.WriteLineColor("Generate password with default options", ColorName.Blue);
+                break;
+            case 2:
+                Terminal.WriteLineColor("Generate password with extended options", ColorName.Blue);
+                break;
+            case 3:
+                Terminal.WriteLineColor("Edit list - not applied", ColorName.Blue);
+                break;
+            case 4:
+                Console.Clear();
+                Terminal.Display();
+                break;
+            case 5:
+                Environment.Exit(0);
+                break;
+            default:
+                Terminal.WriteLineColor("Command not found", ColorName.DarkRed);
+                break;
+        }
+    }
+    else
+    {
+        if (userInput == "exit" || userInput == "quit" || userInput == "q")
+        {
+            Environment.Exit(0);
+        }
+        else if (userInput == "help")
+        {
+            Terminal.WriteLineColor("Program options:", ColorName.Magenta);
+            Terminal.Display();
+            Terminal.WriteLineColor("Available commands:", ColorName.Magenta);
+            Terminal.WriteLineColor("exit, quit, q - close program ", ColorName.DarkYellow);
+            Terminal.WriteLineColor("help - information about what we can do ", ColorName.DarkYellow);
+        }
+        else
+        {
+            Terminal.WriteLineColor("Command not found", ColorName.DarkRed);
+        }
+    }
+}
