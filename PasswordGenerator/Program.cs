@@ -31,6 +31,7 @@ while (true)
                 break;
             case 3:
                 MakeExtendedPassword(passwordExtendedComponent);
+                Terminal.Display();
                 break;
             case 4:
                 Console.Clear();
@@ -67,62 +68,41 @@ while (true)
 
 
 
+static int? UserInput()
+{
+    var input = Console.ReadLine();
+    if (int.TryParse(input, out int value))
+    {
+        return value;
+    }
+    else
+    {
+        Terminal.WriteLineColor("Bad value", ColorName.DarkRed);
+        return null;
+    }
+}
+
 static int MakeExtendedPassword(PasswordComponent model)
 {
     Terminal.WriteLineColor("How much characters in password:", ColorName.Gray);
-    var input = Console.ReadLine();
-    if (int.TryParse(input, out int characters))
-    {
-        model.HowManyCharactersInTotal = characters;
-    }
-    else
-    {
-        Terminal.WriteLineColor("Bad value", ColorName.DarkRed);
-    }
+    var characters = UserInput();
+    model.HowManyCharactersInTotal = (int)characters;
 
     Terminal.WriteLineColor("How many minimum numbers:", ColorName.Gray);
-    input = Console.ReadLine();
-    if (int.TryParse(input, out int digits))
-    {
-        model.HowManyDigits = digits;
-    }
-    else
-    {
-        Terminal.WriteLineColor("Bad value", ColorName.DarkRed);
-    }
+    var digits = UserInput();
+    model.HowManyDigits = (int)digits;
 
     Terminal.WriteLineColor("How many minimum large letters:", ColorName.Gray);
-    input = Console.ReadLine();
-    if (int.TryParse(input, out int largeLetters))
-    {
-        model.HowManyLargeLetter = largeLetters;
-    }
-    else
-    {
-        Terminal.WriteLineColor("Bad value", ColorName.DarkRed);
-    }
+    var largeLetters = UserInput();
+    model.HowManyLargeLetter = (int)largeLetters;
 
     Terminal.WriteLineColor("How many minimum small letters:", ColorName.Gray);
-    input = Console.ReadLine();
-    if (int.TryParse(input, out int smallLetters))
-    {
-        model.HowManySmallLetter = smallLetters;
-    }
-    else
-    {
-        Terminal.WriteLineColor("Bad value", ColorName.DarkRed);
-    }
+    var smallLetters = UserInput();
+    model.HowManySmallLetter = (int)smallLetters;
 
     Terminal.WriteLineColor("How many minimum special characters:", ColorName.Gray);
-    input = Console.ReadLine();
-    if (int.TryParse(input, out int specialCharacters))
-    {
-        model.HowManySpecialCharacter = specialCharacters;
-    }
-    else
-    {
-        Terminal.WriteLineColor("Bad value", ColorName.DarkRed);
-    }
+    var specialCharacters = UserInput();
+    model.HowManySpecialCharacter = (int)specialCharacters;
 
     var validatePasswordResult = model.ValidatePasswordComponent();
 
@@ -136,15 +116,8 @@ static int MakeExtendedPassword(PasswordComponent model)
     var myCharactersList = password.PrepareListOfCharacters(model);
 
     Terminal.WriteLineColor("How many times to shuffle the list:", ColorName.Gray);
-    input = Console.ReadLine();
-    if (int.TryParse(input, out int shuffle))
-    {
-        myCharactersList.Shuffle(shuffle);
-    }
-    else
-    {
-        Terminal.WriteLineColor("Bad value", ColorName.DarkRed);
-    }
+    var shuffle = UserInput();
+    myCharactersList.Shuffle((int)shuffle);
 
     password.AddPasswordRequirements(model);
 
@@ -158,7 +131,7 @@ static int MakeExtendedPassword(PasswordComponent model)
 
     while (true)
     {
-        input = Console.ReadLine();
+        var input = Console.ReadLine();
         if (int.TryParse(input, out int choice))
         {
             switch (choice)
