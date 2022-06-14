@@ -66,8 +66,6 @@ while (true)
     }
 }
 
-
-
 static int? UserInput()
 {
     var input = Console.ReadLine();
@@ -86,22 +84,27 @@ static int MakeExtendedPassword(PasswordComponent model)
 {
     Terminal.WriteLineColor("How much characters in password:", ColorName.Gray);
     var characters = UserInput();
+    if (characters == null) { return -1; }
     model.HowManyCharactersInTotal = (int)characters;
 
     Terminal.WriteLineColor("How many minimum numbers:", ColorName.Gray);
     var digits = UserInput();
+    if (digits == null) { return -1; }
     model.HowManyDigits = (int)digits;
 
     Terminal.WriteLineColor("How many minimum large letters:", ColorName.Gray);
     var largeLetters = UserInput();
+    if (largeLetters == null) { return -1; }
     model.HowManyLargeLetter = (int)largeLetters;
 
     Terminal.WriteLineColor("How many minimum small letters:", ColorName.Gray);
     var smallLetters = UserInput();
+    if (smallLetters == null) { return -1; }
     model.HowManySmallLetter = (int)smallLetters;
 
     Terminal.WriteLineColor("How many minimum special characters:", ColorName.Gray);
     var specialCharacters = UserInput();
+    if (specialCharacters == null) { return -1; }
     model.HowManySpecialCharacter = (int)specialCharacters;
 
     var validatePasswordResult = model.ValidatePasswordComponent();
@@ -117,6 +120,7 @@ static int MakeExtendedPassword(PasswordComponent model)
 
     Terminal.WriteLineColor("How many times to shuffle the list:", ColorName.Gray);
     var shuffle = UserInput();
+    if (shuffle == null) { return -1; }
     myCharactersList.Shuffle((int)shuffle);
 
     password.AddPasswordRequirements(model);
